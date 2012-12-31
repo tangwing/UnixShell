@@ -1,45 +1,27 @@
 #include "cmd.h"
-#include <string.h>
 
-void parse_membres(char *chaine,cmd * ma_cmd)
-{
-	const char* pdelim = "|";
-	char *token;
-	int len = strlen(chaine);
-	printf("%d\n", len);
-	//trim()
-	if(len == 0)
-	{
-		ma_cmd->nb_membres = 0;
-		return;
-	}
-	
-	char * chaine2 = strdup(chaine);
-	printf("dfddds\n");
-	int i = 0;
-	ma_cmd->nb_membres = 1;
-	for( ; i<len ; i++)
-	{
-		printf("%d\n", i);
-		if(chaine2[i] == '|') ma_cmd->nb_membres++;
-	}	
-	//ma_cmd.cmd_initial = 
-	printf("%d\n", ma_cmd->nb_membres);
-	printf("\n%s\n", chaine2);
-	token = strtok( chaine2, "|");// pdelim);
-	while( token != NULL)
-	{
-				
-		printf("%s\n", token);
-		token = strtok( NULL, pdelim);
-	}
-	printf("\n%s\n", chaine2);
-}
+
+///TODO
+//Les strcpy peut etre remplacés par strdup
+//On doit vérifier la val retourné par malloc
+//On n'a pas traité les cas comme 0< et 1>
+
+
 
 int main()
 {
 	cmd ma_cmd;
-	char chaine[100] = "cat < varlogmessages | grep ACPI| wc -l > truc.txt"; 
+	int i;
+	char chaine[100] = "cat acpi0< var/log/messages | grep acpi| wc -l 2>> truc.txt";
 	parse_membres(chaine, &ma_cmd);
+	aff_membres(&ma_cmd);
+	parse_args(&ma_cmd);
+	aff_args(&ma_cmd);
+	
+	for(i=0; i<ma_cmd.nb_membres; i++)
+	{
+		parse_redirect(i, &ma_cmd);
+		aff_redirect(&ma_cmd, i);
+	}
 	return 0;
 }

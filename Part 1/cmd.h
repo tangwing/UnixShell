@@ -1,6 +1,10 @@
+#ifndef CMD_H
+#define CMD_H
+
 #include <stdio.h>
-#include <readline/readline.h> 
+//#include <readline/readline.h> 
 #include <stdlib.h>
+#include <string.h>
 
 typedef struct commande {
 	char* cmd_initial;				/* La chaine initiale tapee par l'utilisateur */
@@ -18,7 +22,9 @@ void parse_args(cmd *c);
 void parse_membres(char *chaine,cmd *ma_cmd); 
 void aff_membres(cmd *ma_cmd);
 void free_membres(cmd *ma_cmd);
-int parse_redirect(unsigned int i,cmd *c);  
+//int -> void
+void parse_redirect(unsigned int i,cmd *c);  
 void free_redirect(cmd *c);
-void aff_redirect(cmd c, int i);
+void aff_redirect(cmd *c, int i);
 
+#endif
