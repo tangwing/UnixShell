@@ -5,6 +5,12 @@
 //#include <readline/readline.h> 
 #include <stdlib.h>
 #include <string.h>
+#define STDIN 0
+#define STDOUT 1
+#define STDERR 2
+
+#define DEFAULT 0
+#define RAPPEND 1
 
 typedef struct commande {
 	char* cmd_initial;				/* La chaine initiale tapee par l'utilisateur */

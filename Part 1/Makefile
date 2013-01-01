@@ -1,6 +1,6 @@
 CC=gcc
 #-lreadline
-LIBS= -lpthread
+LIBS= -lreadline -lpthread
 EXEC=myshell
 all:$(EXEC)
 CCFLAGS=-g -Wall

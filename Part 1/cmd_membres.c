@@ -52,7 +52,6 @@ void parse_membres(char *chaine,cmd * ma_cmd)
 	i=0;
 	while( token != NULL)
 	{
-		printf("%s\n", token);
 
 		//Enlever les espaces au debut et au bout
 		while(*token == ' ')

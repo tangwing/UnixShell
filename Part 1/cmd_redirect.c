@@ -1,11 +1,6 @@
 #include "cmd.h"
 
-#define STDIN 0
-#define STDOUT 1
-#define STDERR 2
 
-#define DEFAULT 0
-#define RAPPEND 1
 
 /**Remplir les champs redirect et type_redir du membre i
 *@param i L'index du membre à traiter
@@ -88,19 +83,21 @@ void parse_redirect(unsigned int i,cmd *c)
 		{
 			int redi = STDOUT;
 			int type_redi = DEFAULT;
+			
 			if(c->cmd_membres[i][j-1] == '2' && 
 				(c->cmd_membres[i][j-2] == ' ' ||
 				c->cmd_membres[i][j-2] == '"' ||
 				c->cmd_membres[i][j-2] == '\'')
 			 )
-			 {
+			 {//STDERR
 			 	redi = STDERR;
-			 	if(c->cmd_membres[i][j+1] == '>')
-			 	{
-			 		type_redi = RAPPEND;
-			 		j++;
-			 	}
 			 }
+			 //Mode de redirection
+		 	 if(c->cmd_membres[i][j+1] == '>')
+		 	 {
+		 		type_redi = RAPPEND;
+		 		j++;
+		     }
 			 
 			 j++;
 			

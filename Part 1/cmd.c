@@ -5,7 +5,8 @@
 //Les strcpy peut etre remplacés par strdup
 //On doit vérifier la val retourné par malloc
 //On n'a pas traité les cas comme 0< et 1>
-
+//On a traité "ch"
+//On a traité les cas les redirection des STD sont entre...
 
 
 int main()
