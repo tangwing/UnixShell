@@ -5,6 +5,9 @@
 //On a traité "ch"
 //On a traité les cas les redirection des STD sont entre...
 //Traiter ";", et "cd"(chdir())
+
+//change exit to error msg
+
 #include <stdio.h>
 #include <string.h>
 #include <sys/types.h>
